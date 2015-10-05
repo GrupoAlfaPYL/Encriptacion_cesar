@@ -24,17 +24,25 @@ public class clsEncriptacionCesar {
 	private void setClave(int clave){
 		this.clave= clave;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	//getters
 	public int getClave(){
 		return this.clave;
 	}
 	//metodos
+	/**
+	 * 
+	 * @param mensaje
+	 * @return
+	 */
 	public String encriptarCesar(String mensaje){
 		generaAscii(mensaje);
 		String texto = "";
 		for (int i=0; i < arrayAscii.size();i++){
-			System.out.println(arrayAscii.get(i).intValue()+clave);
-			texto= texto +  (char) ( (arrayAscii.get(i).intValue()+clave )% 255 );
+			texto= texto +  (char) ( (arrayAscii.get(i).intValue()+clave )% 254 );
 		}
 		return texto;
 	}
@@ -58,7 +66,7 @@ public class clsEncriptacionCesar {
 		String texto="";
 		generaAscii(mensaje);
 		for(int i = 0; i < mensaje.length();i++){
-			texto= texto + (char) ( (arrayAscii.get(i).intValue())% 255 );
+			texto= texto + (char) ( (mensaje.charAt(i) - clave)% 255 );
 		}
 		
 		return texto;
